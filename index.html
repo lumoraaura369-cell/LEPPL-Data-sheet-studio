@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lummora_DataSheet_Studio</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark;--bg:#0a0d13;--p1:#111622;--p2:#161c2b;--line:#252d40;--ink:#ece7da;--mut:#8f97a8;--gold:#cfae66;--gold2:#8e6f2f;--ok:#4fc79a;--bad:#ef7a7a;--blue:#6f9cf2}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(1200px 500px at 70% -10%,#1a2236 0,#0a0d13 60%);background-attachment:fixed;color:var(--ink);font:14px/1.5 "Segoe UI",system-ui,sans-serif;min-height:100vh}
+h1,h2,h3,.k b{font-family:Georgia,"Times New Roman",serif;font-weight:600;letter-spacing:.2px}
+header{display:flex;gap:10px 22px;flex-wrap:wrap;align-items:center;padding:14px 22px;border-bottom:1px solid var(--line);background:linear-gradient(#0d1119,#0a0d13)}
+.br{display:flex;gap:12px;align-items:center}.lg{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font:700 20px Georgia,serif;color:#1b1406;background:linear-gradient(135deg,#ecd9a3,#b58f3f)}
+header h1{font-size:18px;margin:0}.m{color:var(--mut);font-size:12px}
+#vn{display:flex;gap:4px;flex-wrap:wrap;margin-left:auto}
+button,.b{padding:8px 14px;border:1px solid var(--line);background:var(--p2);color:var(--ink);border-radius:7px;cursor:pointer;font:inherit;white-space:nowrap;transition:.15s}
+button:hover{border-color:var(--gold);color:var(--gold)}
+#vn button{border-color:transparent;background:transparent}#vn button.on,button.p,#tabs button.p,#tabs button[aria-selected="true"]{background:linear-gradient(135deg,#e2c883,#a97f32);color:#1a1305;border-color:transparent;font-weight:600}
+#vn button.on:hover,button.p:hover{color:#1a1305;filter:brightness(1.08)}
+#tabs{display:flex;gap:6px;overflow-x:auto;padding:14px 22px 0}
+.wrap{display:grid;grid-template-columns:minmax(270px,350px) 1fr;gap:16px;padding:16px 22px 30px;align-items:start}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}}
+.panel,#views .c{background:linear-gradient(180deg,var(--p2),var(--p1));border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 10px 30px #0006}
+.panel h3{font-size:12px;margin:14px 0 6px;color:var(--gold);text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid var(--line);padding-bottom:4px}
+label{display:block;font-size:11px;color:var(--mut);margin-bottom:7px}
+input,select{width:100%;margin-top:3px;padding:7px 9px;border:1px solid var(--line);border-radius:6px;background:#0c101a;color:var(--ink);font:inherit}
+input:focus,select:focus,button:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.row{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+#doc{background:#fff;color:#000;border:1px solid #d9d2bf;border-radius:4px;padding:16px;overflow-x:auto;box-shadow:0 14px 40px #0008}
+#doc table{width:100%;border-collapse:collapse;margin-bottom:10px;font-size:12.5px}#doc td,#doc th{border:1px solid #444;padding:4px 6px;vertical-align:middle}
+#doc th{background:#1f3864;color:#fff;text-align:left}#doc .hd td{text-align:center;font-weight:700;height:26px}#doc .lg2{height:70px}#doc .lg2 img{max-height:62px;max-width:100%}
+#doc .c{background:#e6f4f2;font-weight:700}#doc .ok{color:#15803d;font-weight:700}#doc .no{color:#b91c1c;font-weight:700}#doc h2{font-size:15px;text-align:center;margin:10px 0}
+#views{max-width:1200px;margin:0 auto;padding:20px 22px 40px}#views h2{font-size:24px;margin:0}.ph{margin-bottom:16px}
+.kp{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:14px}
+.k{background:linear-gradient(145deg,#1a2133,#10151f);border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:10px;padding:14px}.k b{display:block;font-size:30px;color:var(--gold)}.k span{color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:14px;margin-bottom:14px}
+#views h3{margin:0 0 10px;font-size:15px;color:var(--ink)}
+#views table{width:100%;border-collapse:collapse}#views th{text-align:left;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:1px;padding:8px 6px;border-bottom:1px solid var(--line)}#views td{padding:8px 6px;border-bottom:1px solid #1c2334;vertical-align:top}#views tr:hover td{background:#ffffff08}
+.sl{fill:#aab1c0;font-size:11px}.sv{fill:#cfae66;font-size:11px;font-weight:600}
+.cd{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}.cd .b{text-align:left;white-space:normal;padding:12px}.cd .b:hover{transform:translateY(-2px)}.cd small{display:block;color:var(--mut)}
+.ok{color:var(--ok)}.no{color:var(--bad)}a{color:var(--gold)}
+@media print{header,#tabs,.panel,#views,#vn{display:none!important}.wrap{display:block;padding:0}body{background:#fff}#doc{border:0;padding:0;box-shadow:none}}
+</style></head><body>
+<header><div class="br"><div class="lg">L</div><div><h1>Lummora DataSheet Studio</h1><div class="m">Engineering data, calculated and controlled <span id="st"></span></div></div></div><nav id="vn"></nav></header><main id="views"></main>
+<nav id="tabs" role="tablist"></nav>
+<div class="wrap"><div class="panel" id="frm"></div><div id="doc"></div></div>
+<script>
+var G=9.80665,WD="(999.83952+16.945176*T-7.9870401e-3*T^2-46.170461e-6*T^3+105.56302e-9*T^4-280.54253e-12*T^5)/(1+16.87985e-3*T)";
+// sections: [name,[[key,label,unit,default]]]  string default = text field
+var TY=[];
+function csv(){var t=TY[cur],r=run(),L=[["Section","Item","Value","Unit"]];t.sec.forEach(function(s){s[1].forEach(function(f){L.push([s[0],f[1],r.v[f[0]],f[2]])})});r.res.forEach(function(x){L.push(["Calculated",x[0],x[1],x[2]])});r.ck.forEach(function(x){L.push(["Check",x[0],x[1]===null?"n/a":x[1]?"OK":"FAIL",""])});var s=L.map(function(a){return a.map(function(c){return '"'+String(c==null?"":c).replace(/"/g,'""')+'"'}).join(",")}).join("\n"),a=document.createElement("a");a.href=URL.createObjectURL(new Blob(["\ufeff"+s],{type:"text/csv"}));a.download=t.id+"_datasheet.csv";a.click()}
+var ST={},cur=0,SC={},fam="Rotating Equipment",cs=null;
+try{ST=JSON.parse(localStorage.getItem("lum_dss_v1")||"{}")}catch(e){}
+function sv(){try{localStorage.setItem("lum_dss_v1",JSON.stringify(ST))}catch(e){}}
+function ev(s,env){var tk=s.match(/\d*\.?\d+(?:e[+-]?\d+)?|[A-Za-z_]\w*|[()+\-*\/^,]/g),i=0,F={sqrt:Math.sqrt,ln:Math.log,log10:Math.log10,abs:Math.abs,min:Math.min,max:Math.max,step:function(x){return x>0?1:0}};
+function pk(){return tk[i]}function nx(){return tk[i++]}
+function ex(){var a=tm();while(pk()=="+"||pk()=="-"){var o=nx(),b=tm();a=o=="+"?a+b:a-b}return a}
+function tm(){var a=pw();while(pk()=="*"||pk()=="/"){var o=nx(),b=pw();a=o=="*"?a*b:a/b}return a}
+function pw(){var a=un();if(pk()=="^"){nx();return Math.pow(a,pw())}return a}
+function un(){if(pk()=="-"){nx();return -un()}return at()}
+function at(){var t=nx();if(t==null)throw 0;if(t=="("){var v=ex();nx();return v}if(/^[\d.]/.test(t))return parseFloat(t);if(t=="pi")return Math.PI;
+if(pk()=="("){nx();var a=[];if(pk()!=")"){a.push(ex());while(pk()==","){nx();a.push(ex())}}nx();if(!F[t])throw 0;return F[t].apply(null,a)}
+if(!(t in env))throw 0;return env[t]}
+var r=ex();if(i<tk.length)throw 0;return r}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function fm(v,d){return v.toLocaleString("en-IN",{maximumFractionDigits:d,minimumFractionDigits:0})}
+function vals(){var t=TY[cur],s=ST[t.id]||{},o={};t.sec.forEach(function(x){x[1].forEach(function(f){o[f[0]]=s[f[0]]!=null?s[f[0]]:f[3]})});return o}
+function run(){var t=TY[cur],v=vals(),env={},res=[],ck=[];
+Object.keys(v).forEach(function(k){var n=parseFloat(v[k]);if(typeof v[k]!="string"||(v[k]!==""&&!isNaN(n)&&isFinite(v[k]))){if(!isNaN(n))env[k]=n}});
+t.calc.forEach(function(c){var x=NaN;try{x=ev(c[3],env)}catch(e){}if(isFinite(x)){env[c[0]]=x;res.push([c[1],fm(x,c[4]),c[2]])}else res.push([c[1],"—",c[2]])});
+t.chk.forEach(function(c){var x=NaN;try{x=ev(c[1],env)}catch(e){}ck.push([c[0],isFinite(x)?x>=-1e-9:null,c[2]])});
+return{v:v,res:res,ck:ck}}
+var MF=[["cl","Client","NTPC Limited"],["epc","EPC Contractor","Oswal Energies Limited"],["dc","Design Contractor","PLECO"],["pj","Project","BALANCE OF PLANT (BOP) PACKAGE FOR CCU (CARBON CAPTURE AND UTILIZATION) PLANTS"],["dn","Document No.","0110-111-001-XXX-XXXX"],["rv","Revision","0"],["dt","Date",""],["sb","Submission","Issued for Client Review"],["pb","Prepared by","" ],["ck","Checked by",""],["ap","Approved by (Oswal)",""]];
+function meta(k,d){var m=ST.meta||{};return m[k]!=null?m[k]:d}
+function form(){var t=TY[cur],v=vals(),h="<h3>Document header</h3>";
+MF.forEach(function(f){h+="<label>"+f[1]+"<input data-m='"+f[0]+"' value='"+esc(meta(f[0],f[2]))+"'></label>"});
+h+="<label>Logos: Client, EPC, Design Contractor<input type='file' id='lg' accept='image/*' multiple></label>";
+t.sec.forEach(function(s){h+="<h3>"+esc(s[0])+"</h3>";s[1].forEach(function(f){h+="<label>"+esc(f[1])+(f[2]?" ("+esc(f[2])+")":"")+"<input data-k='"+f[0]+"' value='"+esc(v[f[0]])+"'></label>"})});
+h+="<div class='row'><button class='p' id='pr'>Print / Save PDF</button><button id='rs'>Reset values</button><button id='ex'>Export CSV</button><button id='xl'>Export Excel</button></div><h3>Server</h3><div class='row'><button id='s1'>Save draft</button><button id='s2'>Send for review</button><button id='s3' class='p'>Approve</button></div><div class='m' id='sm'></div><h3>Saved datasheets</h3><div id='sl' class='m'></div><div class='row' style='display:none'></div>";
+var e=document.getElementById("frm");e.innerHTML=h;
+e.querySelectorAll("[data-m]").forEach(function(i){i.oninput=function(){ST.meta=ST.meta||{};ST.meta[i.dataset.m]=i.value;sv();doc()}});
+e.querySelectorAll("[data-k]").forEach(function(i){i.oninput=function(){ST[t.id]=ST[t.id]||{};ST[t.id][i.dataset.k]=i.value;sv();doc()}});
+document.getElementById("pr").onclick=function(){window.print()};
+document.getElementById("rs").onclick=function(){delete ST[t.id];sv();form();doc()};document.getElementById("ex").onclick=csv;document.getElementById("xl").onclick=xl;
+document.getElementById("s1").onclick=function(){saveS("Draft")};document.getElementById("s2").onclick=function(){saveS("Review")};document.getElementById("s3").onclick=function(){saveS("Approved")};listS();
+document.getElementById("lg").onchange=function(){var fs=Array.prototype.slice.call(this.files,0,3);fs.forEach(function(f,i){var r=new FileReader();r.onload=function(){ST.logo=ST.logo||[];ST.logo[i]=r.result;sv();doc()};r.readAsDataURL(f)})}}
+function doc(){var t=TY[cur],r=run(),L=ST.logo||[],h="";
+function lg(i){return L[i]?"<img src='"+L[i]+"' alt=''>":"<span style='color:#999'>logo</span>"}
+h+="<table><tr class='hd'><td style='width:34%'>CLIENT</td><td style='width:33%'>EPC CONTRACTOR</td><td>DESIGN CONTRACTOR</td></tr><tr class='hd lg2'><td>"+lg(0)+"<br><small>"+esc(meta("cl","NTPC Limited"))+"</small></td><td>"+lg(1)+"<br><small>"+esc(meta("epc","Oswal Energies Limited"))+"</small></td><td>"+lg(2)+"<br><small>"+esc(meta("dc","PLECO"))+"</small></td></tr></table>";
+h+="<table><tr><td><b>PROJECT:</b> "+esc(meta("pj",MF[3][2]))+"</td></tr></table><h2>"+esc(t.title)+"</h2><table><tr><td><b>DOCUMENT NUMBER</b></td><td colspan='5'>"+esc(meta("dn","0110-111-001-XXX-XXXX"))+"</td></tr><tr><th>REV</th><th>DATE</th><th>SUBMISSION</th><th>PREPARED BY</th><th>CHECKED BY</th><th>APPROVED BY OSWAL</th></tr><tr><td>"+esc(meta("rv","0"))+"</td><td>"+esc(meta("dt",""))+"</td><td>"+esc(meta("sb",""))+"</td><td>"+esc(meta("pb",""))+"</td><td>"+esc(meta("ck",""))+"</td><td>"+esc(meta("ap",""))+"</td></tr></table>";
+var n=0;t.sec.forEach(function(s){h+="<table><tr><th colspan='3'>"+esc(s[0])+"</th></tr>";s[1].forEach(function(f){n++;h+="<tr><td style='width:40px'>"+n+"</td><td style='width:46%'>"+esc(f[1])+"</td><td>"+esc(r.v[f[0]])+(f[2]?" "+esc(f[2]):"")+"</td></tr>"});h+="</table>"});
+h+="<table><tr><th colspan='3'>Calculated values</th></tr>";r.res.forEach(function(x){h+="<tr class='c'><td style='width:40px'>"+(++n)+"</td><td style='width:46%'>"+esc(x[0])+"</td><td class='c'>"+esc(x[1])+" "+esc(x[2])+"</td></tr>"});h+="</table>";
+h+="<table><tr><th>Design check</th><th style='width:90px'>Result</th><th>Remark</th></tr>";r.ck.forEach(function(x){h+="<tr><td>"+esc(x[0])+"</td><td class='"+(x[1]?"ok":"no")+"'>"+(x[1]===null?"n/a":x[1]?"OK":"FAIL")+"</td><td>"+(x[1]===false?esc(x[2]):"")+"</td></tr>"});h+="</table>";
+h+="<p style='font-size:11px'>Calculated values are checks on the entered data using standard formulas. They do not replace the vendor design calculation or approval by a qualified engineer.</p>";
+document.getElementById("doc").innerHTML=h;
+var bad=r.ck.filter(function(x){return x[1]===false}).length;document.getElementById("st").textContent=bad?bad+" check(s) failing":"All checks OK"}
+var tb=document.getElementById("tabs");
+function tabsR(){tb.innerHTML="";var fs=[];TY.forEach(function(t){if(fs.indexOf(t.fam)<0)fs.push(t.fam)});
+fs.forEach(function(f){var b=document.createElement("button");b.textContent=f;b.className=f==fam?"p":"";b.onclick=function(){fam=f;for(var i=0;i<TY.length;i++)if(TY[i].fam==f){cur=i;break}pick()};tb.appendChild(b)});
+var s=document.createElement("span");s.textContent="|";s.className="m";tb.appendChild(s);
+TY.forEach(function(t,i){if(t.fam!=fam)return;var b=document.createElement("button");b.textContent=t.n;b.setAttribute("role","tab");b.setAttribute("aria-selected",i==cur);b.onclick=function(){cur=i;cs=null;pick()};tb.appendChild(b)})}
+function pick(){fam=TY[cur].fam;tabsR();form();doc()}
+
+var KEY=localStorage.getItem("lum_key")||"";
+function api(m,u,b){return fetch(u,{method:m,headers:{"content-type":"application/json","x-api-key":KEY},body:b?JSON.stringify(b):undefined}).then(function(r){if(r.status==401){KEY=prompt("API key")||"";localStorage.setItem("lum_key",KEY);return api(m,u,b)}return r.json()})}
+function saveS(st){var t=TY[cur],r=run(),b={tid:t.id,status:st,meta:ST.meta||{},values:r.v};
+if(st=="Approved"&&r.ck.some(function(c){return c[1]===false})&&!confirm("Some design checks are failing. Approve anyway?"))return;
+(cs?api("PUT","/api/sheets/"+cs.id,b):api("POST","/api/sheets",b)).then(function(s){var e=document.getElementById("sm");if(s.error){e.textContent=s.error;return}cs=s;e.textContent=s.no+" Rev "+s.rev+" saved as "+s.status;listS()}).catch(function(){document.getElementById("sm").textContent="Server not reachable"})}
+function listS(){api("GET","/api/sheets").then(function(a){var e=document.getElementById("sl");if(!e)return;if(!Array.isArray(a)||!a.length){e.textContent="No saved datasheets yet";return}
+e.innerHTML=a.slice(0,15).map(function(s){return "<div><a href='#' data-o='"+s.id+"'>"+s.no+" Rev "+s.rev+"</a> "+esc(s.tid)+" "+esc(s.tag)+" – "+s.status+"</div>"}).join("");
+e.querySelectorAll("[data-o]").forEach(function(l){l.onclick=function(ev){ev.preventDefault();api("GET","/api/sheets/"+l.dataset.o).then(function(s){for(var i=0;i<TY.length;i++)if(TY[i].id==s.tid)cur=i;ST[s.tid]=s.values;ST.meta=s.meta;cs=s;pick();document.getElementById("sm").textContent=s.no+" Rev "+s.rev+" "+s.status})}})}).catch(function(){})}
+fetch("/api/templates").then(function(r){return r.json()}).then(function(a){a.forEach(function(t){TY.push(t)});cur=0;pick();go("dash")}).catch(function(){document.getElementById("doc").textContent="Server not reachable. Start it with: node server.js"});
+
+function xl(){var a=document.createElement("a");a.href=URL.createObjectURL(new Blob(['<html><head><meta charset="utf-8"></head><body>'+document.getElementById("doc").innerHTML+'</body></html>'],{type:"application/vnd.ms-excel"}));a.download=TY[cur].id+"_datasheet.xls";a.click()}
+var VW="dash",NV=[["dash","Dashboard"],["lib","Library"],["ds","Datasheet"],["cmp","Compare"],["xc","Cross-check"]];
+function go(v){VW=v;var n=document.getElementById("vn");n.innerHTML="";NV.forEach(function(x){var b=document.createElement("button");b.textContent=x[1];b.className=VW==x[0]?"on":"";b.onclick=function(){go(x[0])};n.appendChild(b)});
+var d=v=="ds";document.getElementById("tabs").style.display=d?"":"none";document.querySelector(".wrap").style.display=d?"":"none";var p=document.getElementById("views");p.style.display=d?"none":"";if(!d)({dash:vDash,lib:vLib,cmp:vCmp,xc:vXc})[v](p)}
+function pg(t,s){return '<div class="ph"><h2>'+t+'</h2><div class="m">'+s+'</div></div>'}
+function bars(d){var m=Math.max.apply(null,d.map(function(x){return x[1]}).concat([1]));return '<svg viewBox="0 0 520 '+(d.length*24+8)+'" width="100%" role="img"><defs><linearGradient id="gg"><stop offset="0" stop-color="#ecd9a3"/><stop offset="1" stop-color="#a97f32"/></linearGradient></defs>'+d.map(function(x,i){var y=i*24+4,w=Math.max(330*x[1]/m,2);return '<text x="0" y="'+(y+13)+'" class="sl">'+esc(x[0])+'</text><rect x="165" y="'+y+'" width="'+w+'" height="16" rx="3" fill="url(#gg)"/><text x="'+(171+w)+'" y="'+(y+13)+'" class="sv">'+x[1]+'</text>'}).join("")+'</svg>'}
+function donut(d){var t=d.reduce(function(a,x){return a+x[1]},0)||1,C=251.3,o=0,col=["#cfae66","#6f9cf2","#4fc79a","#8f97a8"];return '<svg viewBox="0 0 240 130" width="100%" role="img"><g transform="translate(65,65) rotate(-90)"><circle r="40" fill="none" stroke="#252d40" stroke-width="16"/>'+d.map(function(x,i){var l=C*x[1]/t,s='<circle r="40" fill="none" stroke="'+col[i%4]+'" stroke-width="16" stroke-dasharray="'+l+' '+(C-l)+'" stroke-dashoffset="'+(-o)+'"/>';o+=l;return s}).join("")+'</g><text x="65" y="70" text-anchor="middle" class="sv" style="font-size:18px">'+(t==1&&!d[0][1]?0:t)+'</text>'+d.map(function(x,i){return '<rect x="135" y="'+(28+i*22)+'" width="10" height="10" rx="2" fill="'+col[i%4]+'"/><text x="151" y="'+(37+i*22)+'" class="sl">'+esc(x[0])+' '+x[1]+'</text>'}).join("")+'</svg>'}
+function runV(t,v){var env={};Object.keys(v||{}).forEach(function(k){var n=parseFloat(v[k]);if(!isNaN(n)&&isFinite(v[k]))env[k]=n});t.calc.forEach(function(c){try{var x=ev(c[3],env);if(isFinite(x))env[c[0]]=x}catch(e){}});return t.chk.map(function(c){var x=NaN;try{x=ev(c[1],env)}catch(e){}return isFinite(x)?x>=-1e-9:null})}
+function tOf(id){return TY.filter(function(t){return t.id==id})[0]}
+function details(a,n){return Promise.all(a.filter(function(s){return s.status!="Superseded"}).slice(0,n).map(function(s){return api("GET","/api/sheets/"+s.id)}))}
+function vDash(p){p.innerHTML=pg("Dashboard","Live overview of datasheets, approvals and design checks")+"<div class='m'>Loading…</div>";
+api("GET","/api/sheets").then(function(a){if(!Array.isArray(a))a=[];return details(a,40).then(function(ds){
+var st={Draft:0,Review:0,Approved:0,Superseded:0},fam={},tpl={},mon={},fail=0,rows="";
+a.forEach(function(s){st[s.status]=(st[s.status]||0)+1;var m=String(s.updated||"").slice(0,7);if(m)mon[m]=(mon[m]||0)+1;var t=tOf(s.tid);if(t){tpl[t.n]=(tpl[t.n]||0)+1}});
+TY.forEach(function(t){fam[t.fam]=(fam[t.fam]||0)+1});
+ds.forEach(function(s){var t=tOf(s.tid);if(!t)return;var r=runV(t,s.values),f=r.filter(function(x){return x===false}).length;fail+=f;rows+="<tr><td><a href='#' data-o='"+s.id+"'>"+esc(s.no)+" Rev "+s.rev+"</a></td><td>"+esc(t.n)+"</td><td>"+esc(s.values&&s.values.tag)+"</td><td>"+s.status+"</td><td class='"+(f?"no":"ok")+"'>"+(f?f+" failing":"All OK")+"</td></tr>"});
+var ms=Object.keys(mon).sort().slice(-6).map(function(k){return[k,mon[k]]}),tp=Object.keys(tpl).map(function(k){return[k,tpl[k]]}).sort(function(x,y){return y[1]-x[1]}).slice(0,8);
+p.innerHTML=pg("Dashboard","Live overview of datasheets, approvals and design checks")+"<div class='kp'><div class='k'><b>"+TY.length+"</b><span>Templates</span></div><div class='k'><b>"+a.length+"</b><span>Datasheets saved</span></div><div class='k'><b>"+st.Approved+"</b><span>Approved</span></div><div class='k'><b>"+st.Review+"</b><span>In review</span></div><div class='k'><b style='color:"+(fail?"var(--bad)":"var(--ok)")+"'>"+fail+"</b><span>Failing checks</span></div></div>"+
+"<div class='g2'><div class='c'><h3>Status</h3>"+donut(Object.keys(st).map(function(k){return[k,st[k]]}))+"</div><div class='c'><h3>Datasheets updated per month</h3>"+(ms.length?bars(ms):"<div class='m'>No data yet</div>")+"</div><div class='c'><h3>Templates by family</h3>"+bars(Object.keys(fam).map(function(k){return[k,fam[k]]}))+"</div><div class='c'><h3>Most used templates</h3>"+(tp.length?bars(tp):"<div class='m'>No data yet</div>")+"</div></div>"+
+"<div class='c'><h3>Recent datasheets and check status</h3>"+(rows?"<table><tr><th>Number</th><th>Template</th><th>Tag</th><th>Status</th><th>Checks</th></tr>"+rows+"</table>":"<div class='m'>No saved datasheets yet. Open the Library, pick a template and press Save.</div>")+"</div>";
+p.querySelectorAll("[data-o]").forEach(function(l){l.onclick=function(e){e.preventDefault();openS(l.dataset.o)}})})}).catch(function(){p.innerHTML=pg("Dashboard","")+"<div class='c'>Server not reachable or API key missing.</div>"})}
+function openS(id){api("GET","/api/sheets/"+id).then(function(s){for(var i=0;i<TY.length;i++)if(TY[i].id==s.tid)cur=i;ST[s.tid]=s.values;ST.meta=s.meta;cs=s;pick();go("ds");document.getElementById("sm").textContent=s.no+" Rev "+s.rev+" "+s.status})}
+function vLib(p){var q="";function draw(){var s=q.toLowerCase(),f={};TY.forEach(function(t,i){if(s&&(t.n+" "+t.fam+" "+t.title).toLowerCase().indexOf(s)<0)return;(f[t.fam]=f[t.fam]||[]).push([t,i])});
+var h="";Object.keys(f).forEach(function(k){h+="<h3 style='margin:16px 0 8px;color:var(--gold)'>"+esc(k)+" <span class='m'>"+f[k].length+"</span></h3><div class='cd'>"+f[k].map(function(x){return "<button class='b' data-i='"+x[1]+"'><b>"+esc(x[0].n)+"</b><small>"+x[0].calc.length+" calculations · "+x[0].chk.length+" checks</small></button>"}).join("")+"</div>"});
+document.getElementById("lr").innerHTML=h||"<div class='m'>No template matches.</div>";document.querySelectorAll("#lr [data-i]").forEach(function(b){b.onclick=function(){cur=+b.dataset.i;cs=null;pick();go("ds")}})}
+p.innerHTML=pg("Template Library",TY.length+" datasheet templates across "+Object.keys(TY.reduce(function(o,t){o[t.fam]=1;return o},{})).length+" families")+"<input id='lq' placeholder='Search templates, families…' style='max-width:380px'><div id='lr'></div>";document.getElementById("lq").oninput=function(){q=this.value;draw()};draw()}
+function vCmp(p){p.innerHTML=pg("Revision Compare","Pick a datasheet number and two revisions to see what changed")+"<div class='m'>Loading…</div>";
+api("GET","/api/sheets").then(function(a){var g={};a.forEach(function(s){(g[s.no]=g[s.no]||[]).push(s)});var ns=Object.keys(g).filter(function(n){return g[n].length>1});
+if(!ns.length){p.innerHTML=pg("Revision Compare","")+"<div class='c'>No datasheet has two revisions yet. Approve a sheet and edit it to create Rev 1.</div>";return}
+p.innerHTML=pg("Revision Compare","Pick a datasheet number and two revisions")+"<div class='c'><div class='g2' style='margin:0'><label>Datasheet<select id='cn'>"+ns.map(function(n){return"<option>"+n+"</option>"}).join("")+"</select></label><label>From<select id='ca'></select></label><label>To<select id='cb'></select></label></div><div id='cr'></div></div>";
+function fill(){var r=g[document.getElementById("cn").value].slice().sort(function(x,y){return x.rev-y.rev}),o=r.map(function(s){return"<option value='"+s.id+"'>Rev "+s.rev+" ("+s.status+")</option>"}).join("");document.getElementById("ca").innerHTML=o;document.getElementById("cb").innerHTML=o;document.getElementById("cb").selectedIndex=r.length-1;run2()}
+function run2(){Promise.all([api("GET","/api/sheets/"+document.getElementById("ca").value),api("GET","/api/sheets/"+document.getElementById("cb").value)]).then(function(x){var t=tOf(x[0].tid),h="",n=0;if(t)t.sec.forEach(function(s){s[1].forEach(function(f){var u=x[0].values[f[0]],w=x[1].values[f[0]];if(String(u)!=String(w)){n++;h+="<tr><td>"+esc(f[1])+"</td><td>"+esc(u)+"</td><td class='no'>"+esc(w)+"</td></tr>"}})});
+document.getElementById("cr").innerHTML=n?"<table><tr><th>Field</th><th>Rev "+x[0].rev+"</th><th>Rev "+x[1].rev+"</th></tr>"+h+"</table>":"<div class='m' style='margin-top:10px'>No difference in values between these revisions.</div>"})}
+document.getElementById("cn").onchange=fill;document.getElementById("ca").onchange=run2;document.getElementById("cb").onchange=run2;fill()}).catch(function(){p.innerHTML=pg("Revision Compare","")+"<div class='c'>Server not reachable or API key missing.</div>"})}
+function vXc(p){p.innerHTML=pg("Cross-document Check","Finds the same parameter with different values across datasheets of one service or tag")+"<div class='c'><label style='max-width:240px'>Group by<select id='gb'><option value='svc'>Service (first word)</option><option value='tag'>Tag</option></select></label><div id='xr' class='m'>Loading…</div></div>";
+var K=["rho","T","Q","H","V","Vs","P","t"];
+function go2(){var gb=document.getElementById("gb").value;api("GET","/api/sheets").then(function(a){return details(a,80)}).then(function(ds){var G={};ds.forEach(function(s){var t=tOf(s.tid);if(!t)return;var k=String(s.values&&s.values[gb]||"").toLowerCase().trim();if(gb=="svc")k=k.split(/\s+/)[0];if(!k||/x{3}/.test(k))return;(G[k]=G[k]||[]).push([s,t])});
+var h="";Object.keys(G).forEach(function(k){if(G[k].length<2)return;K.forEach(function(key){var L=[];G[k].forEach(function(x){var v=parseFloat(x[0].values[key]);var f;x[1].sec.forEach(function(s){s[1].forEach(function(ff){if(ff[0]==key)f=ff})});if(f&&!isNaN(v))L.push([x[0].no+" ("+x[1].n+")",v,f[1]+(f[2]?" "+f[2]:"")])});
+if(L.length<2)return;var mx=Math.max.apply(null,L.map(function(z){return z[1]})),mn=Math.min.apply(null,L.map(function(z){return z[1]}));if(mx&&(mx-mn)/Math.abs(mx)>0.005)h+="<tr><td>"+esc(k)+"</td><td>"+esc(L[0][2])+"</td><td>"+L.map(function(z){return esc(z[0])+": <b class='no'>"+z[1]+"</b>"}).join("<br>")+"</td></tr>"})});
+document.getElementById("xr").innerHTML=h?"<table><tr><th>Group</th><th>Parameter</th><th>Values found</th></tr>"+h+"</table>":"No mismatches found across "+ds.length+" saved datasheets."}).catch(function(){document.getElementById("xr").textContent="Server not reachable or API key missing."})}
+document.getElementById("gb").onchange=go2;go2()}
+</script></body></html>
